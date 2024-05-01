@@ -2,10 +2,12 @@ const express = require('express')
 const userRouter = require('./routes/user.router')
 const APIError = require('./utils/APIError')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 // MiddleWare
 const app = express()
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors())
 
 // Routes
