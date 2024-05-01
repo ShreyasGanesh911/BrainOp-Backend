@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const AsyncHandler = require("../utils/AsyncHandler");
 const ErrorHandler = require("../utils/ErrorHandler");
 const product = require("../Model/product.model");
+const main = require("../utils/NodeMailer");
 require('dotenv').config()
 const signup = AsyncHandler(async(req,res,next)=>{
     const {name,userName,email,password} = req.body
@@ -14,6 +15,7 @@ const signup = AsyncHandler(async(req,res,next)=>{
     console.log(response)
     const value = jwt.sign({response},process.env.JWT_KEY,{expiresIn:'4h'})
     res.cookie('AuthToken',value,{maxAge:1000 * 60 * 60*4})
+    main(name,email)
     res.status(201).json({success:true,message:"User created successfully"})
 })
 
