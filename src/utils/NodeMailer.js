@@ -34,7 +34,7 @@ async function main(userName,email) {
 </section>
     `
   });
-  console.log("Message sent: %s", info.messageId);
+  
 }
 
 module.exports= main
