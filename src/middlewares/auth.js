@@ -6,8 +6,9 @@ require('dotenv').config()
 
 const Auth = AsyncHandler(async(req,res,next)=>{
     const {AuthToken} = req.cookies
+    if(!AuthToken)
+        return next(new ErrorHandler(401,"No token exists"))
     console.log("AuthToken",AuthToken)
-    console.log(process.env.JWT_KEY)
     jwt.verify(AuthToken,process.env.JWT_KEY,async(err,users)=>{
         if(err){
             console.log(err)
