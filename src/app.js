@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser')
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({credentials:true,origin:true}))
+app.use(cors({origin:true,credentials: true}))
 
 // Routes
 app.use('/user',userRouter)
