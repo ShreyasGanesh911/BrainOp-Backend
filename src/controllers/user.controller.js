@@ -31,4 +31,8 @@ const getData = AsyncHandler(async(req,res,next)=>{
     res.status(200).json({success:true,response,limit:limit,total:100,skip:skip||0})
 })
 
-module.exports = {signup,getData}
+const logOut = AsyncHandler(async(req,res,next)=>{
+    res.clearCookie('AuthToken')
+    res.status(200).json({success:true,message:"Cookies cleared"})
+})
+module.exports = {signup,getData,logOut}
