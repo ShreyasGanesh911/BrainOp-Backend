@@ -24,9 +24,11 @@ const signup = AsyncHandler(async(req,res,next)=>{
 })
 
 const getData = AsyncHandler(async(req,res,next)=>{
-    const {limit,skip} = req.query
-    const response = await product.find().limit(limit||20).skip(skip||0)
-    res.status(200).json({success:true,response,limit:limit||20,total:100,skip:skip||0})
+    const {page} = req.query
+    const limit = 12
+    const skip = 12*(page)
+    const response = await product.find().limit(limit).skip(skip||0)
+    res.status(200).json({success:true,response,limit:limit,total:100,skip:skip||0})
 })
 
 module.exports = {signup,getData}

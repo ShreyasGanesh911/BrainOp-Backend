@@ -13,7 +13,7 @@ const Auth = AsyncHandler(async(req,res,next)=>{
         }
         const response = await user.findOne({_id:users.response._id})
         if(!response)
-            return next(new ErrorHandler(404,"User not found"))
+            return next(new ErrorHandler(401,"Invalid,User not found"))
         req.user = users
         next()
     })
