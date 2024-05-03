@@ -36,7 +36,7 @@ const login = AsyncHandler(async(req,res,next)=>{
     if(bcrypt.compareSync(password,response.password)){
         if(response.verified){
             const value = jwt.sign({response},process.env.JWT_KEY,{expiresIn:'4h'})
-            res.cookie('AuthToken',value,{maxAge:1000 * 60 * 60*4})
+            res.cookie('AuthToken',value,{httpOnly:true,sameSite:"none",secure:true})
            return res.status(200).json({success:true,message:"logged in"})
         }
         else{
@@ -57,7 +57,7 @@ const verify = AsyncHandler(async(req,res,next)=>{
     if(response[0].otp === password){
         response = await user.findOneAndUpdate({email},{verified:true})
             const value = jwt.sign({response},process.env.JWT_KEY,{expiresIn:'4h'})
-             res.cookie('AuthToken',value,{maxAge:1000 * 60 * 60*4})
+             res.cookie('AuthToken',value,{httpOnly:true,sameSite:"none",secure:true})
         return res.status(200).json({success:true,message:"verified"})
     }
       
