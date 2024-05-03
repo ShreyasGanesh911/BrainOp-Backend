@@ -18,7 +18,12 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:[true,"password not provided"]
-    }
+    },
+    verified:{
+        type:Boolean,
+        default:false
+    },
+    otp:Number
 
 })
 
