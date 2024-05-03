@@ -6,8 +6,10 @@ require('dotenv').config()
 
 const Auth = AsyncHandler(async(req,res,next)=>{
     const {AuthToken} = req.cookies
+    console.log(AuthToken)
     jwt.verify(AuthToken,process.env.JWT_KEY,async(err,users)=>{
         if(err){
+            console.log(err)
             res.clearCookie("AuthToken")
             return next(new ErrorHandler(401,"Invalid authToken, need to login again"))
         }
