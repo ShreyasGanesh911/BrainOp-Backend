@@ -1,8 +1,8 @@
-# Tech Terrain
+# Thrift Terrain
 Internship assignment submission
 
 ## FrontEnd
-[Tech Terrain frontend](https://github.com/ShreyasGanesh911/BrainOp-Frontend)
+[Thrift Terrain frontend](https://github.com/ShreyasGanesh911/BrainOp-Frontend)
 
 ## FrameWorks or packages used
 *  Node Js
