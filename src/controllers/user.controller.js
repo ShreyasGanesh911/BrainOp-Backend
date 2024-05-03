@@ -70,7 +70,6 @@ const resendOTP = AsyncHandler(async(req,res,next)=>{
     const {email} = req.body
     otp = Math.floor(Math.random()*9000) + 1000
     const response = await user.findOneAndUpdate({email},{otp:otp})
-    console.log(response)
     main(response.userName,email,otp)
     res.status(200).json({success:true,message:"OTP sent successfully"})
 })
